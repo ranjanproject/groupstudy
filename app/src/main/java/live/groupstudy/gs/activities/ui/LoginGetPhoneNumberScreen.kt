@@ -28,16 +28,17 @@ import live.groupstudy.gs.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun GetPhoneNumberScreen(modifier: Modifier = Modifier){
+fun GetPhoneNumberScreen(modifier: Modifier = Modifier, onButtonClicked: (String)->Unit = {}){
+    var number by remember {
+        mutableStateOf("")
+    }
 
     Column(
         modifier
             .fillMaxSize()
             .padding(20.dp)) {
         val textModifier = Modifier.fillMaxWidth()
-        var number by remember {
-            mutableStateOf("")
-        }
+
         Text(text = stringResource(id = R.string.sign_in_or_create_an_account), textModifier)
         Spacer(modifier = Modifier.height(20.dp))
 
@@ -51,7 +52,7 @@ fun GetPhoneNumberScreen(modifier: Modifier = Modifier){
         )
 
         Spacer(modifier = Modifier.height(40.dp))
-        GradientButton(text = stringResource(id = R.string.continue_btn))
+        GradientButton(text = stringResource(id = R.string.continue_btn), onButtonClick = {if(number.length==10)onButtonClicked(number)})
     }
 }
 

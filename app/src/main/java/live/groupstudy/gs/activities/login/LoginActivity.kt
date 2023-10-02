@@ -42,17 +42,22 @@ class LoginActivity : ComponentActivity() {
             }
         }
     }
-}
 
-@Composable
-fun LoginActivityScreen() {
-    Column(Modifier.background(Brush.linearGradient(ScreenGradient))) {
-        GetPhoneNumberScreen()
+    @Composable
+    private fun LoginActivityScreen() {
+        Column(Modifier.background(Brush.linearGradient(ScreenGradient))) {
+            GetPhoneNumberScreen(onButtonClicked = {onContinueButtonClicked(it)})
+        }
+    }
+
+    @Preview
+    @Composable
+    private fun LoginActivityScreenPreview() {
+        LoginActivityScreen()
+    }
+
+    private fun onContinueButtonClicked(number: String){
+      val x = number
     }
 }
 
-@Preview
-@Composable
-fun LoginActivityScreenPreview() {
-    LoginActivityScreen()
-}
