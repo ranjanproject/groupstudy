@@ -2,6 +2,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -63,6 +64,8 @@ dependencies {
     implementation("androidx.compose.material3:material3")
     implementation(platform("androidx.compose:compose-bom:2023.03.00"))
     implementation("androidx.fragment:fragment:${fragment_version}")
+    implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
+    implementation("com.google.firebase:firebase-analytics-ktx")
 //    // Kotlin
     implementation("androidx.fragment:fragment-ktx:$fragment_version")
     implementation(platform("androidx.compose:compose-bom:2023.03.00"))
