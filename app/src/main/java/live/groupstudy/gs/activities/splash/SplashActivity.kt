@@ -53,7 +53,7 @@ class SplashActivity : ComponentActivity() {
         }
 
         if (visibleOnboarding) {
-            OnBoardingScreen()
+            OnBoardingScreen(onButtonClick = {onGetStartedClicked()})
         } else {
             SplashLayout()
         }
@@ -63,5 +63,9 @@ class SplashActivity : ComponentActivity() {
             visibleOnboarding = true
         })
 
+    }
+
+    private fun onGetStartedClicked(){
+      val x = 0
     }
 }

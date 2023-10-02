@@ -30,7 +30,7 @@ import live.groupstudy.gs.ui.theme.ButtonGradient
 import live.groupstudy.gs.ui.theme.ScreenGradient
 
 @Composable
-fun OnBoardingScreen(modifier: Modifier = Modifier) {
+fun OnBoardingScreen(modifier: Modifier = Modifier, onButtonClick: () -> Unit) {
     Column(
         modifier
             .fillMaxSize()
@@ -68,7 +68,7 @@ fun OnBoardingScreen(modifier: Modifier = Modifier) {
 
         Spacer(modifier = Modifier.height(40.dp))
 
-        GradientButton(stringResource(R.string.get_started))
+        GradientButton(stringResource(R.string.get_started), onButtonClick = onButtonClick)
     }
 }
 
@@ -104,5 +104,5 @@ fun GradientButton(
 @Preview(showBackground = true)
 @Composable
 fun OnBoardingScreenPreview() {
-    OnBoardingScreen(Modifier.background(Brush.linearGradient(ScreenGradient)))
+    OnBoardingScreen(Modifier.background(Brush.linearGradient(ScreenGradient)), {})
 }

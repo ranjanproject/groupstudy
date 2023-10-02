@@ -65,6 +65,8 @@ dependencies {
     implementation("androidx.fragment:fragment:${fragment_version}")
 //    // Kotlin
     implementation("androidx.fragment:fragment-ktx:$fragment_version")
+    implementation(platform("androidx.compose:compose-bom:2023.03.00"))
+    androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
     // Testing Fragments in Isolation
     debugImplementation("androidx.fragment:fragment-testing:$fragment_version")
 

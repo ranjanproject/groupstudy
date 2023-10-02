@@ -7,4 +7,5 @@
     <string name="study_with_friends">Study with friends &amp; to be friends.</string>
     <string name="help_in_focus">Help in focused study time.</string>
     <string name="get_started">Get Started</string>
+    <string name="title_activity_login">LoginActivity</string>
 </resources>
