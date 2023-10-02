@@ -17,8 +17,14 @@ import live.groupstudy.gs.ui.theme.GroupStudyTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        startSplashActivity()
+    }
 
-        val intent = Intent(this, SplashActivity::class.java)
-        startActivity(intent)
+    override fun onStart() {
+        super.onStart()
+    }
+
+    private fun startSplashActivity(){
+        SplashActivity.start(this)
     }
 }
