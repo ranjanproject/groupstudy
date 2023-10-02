@@ -5,6 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -16,10 +18,13 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import kotlinx.coroutines.delay
+import live.groupstudy.gs.activities.login.LoginActivity
 import live.groupstudy.gs.activities.ui.OnBoardingScreen
 import live.groupstudy.gs.activities.ui.SplashLayout
 import live.groupstudy.gs.ui.theme.GroupStudyTheme
+import live.groupstudy.gs.ui.theme.ScreenGradient
 
 class SplashActivity : ComponentActivity() {
 
@@ -52,11 +57,14 @@ class SplashActivity : ComponentActivity() {
             mutableStateOf(false)
         }
 
-        if (visibleOnboarding) {
-            OnBoardingScreen(onButtonClick = {onGetStartedClicked()})
-        } else {
-            SplashLayout()
+        Column(Modifier.background(Brush.linearGradient(ScreenGradient))) {
+            if (visibleOnboarding) {
+                OnBoardingScreen(onButtonClick = {onGetStartedClicked()})
+            } else {
+                SplashLayout()
+            }
         }
+
 
         LaunchedEffect(key1 = "Splash", block = {
             delay(2000)
@@ -66,6 +74,7 @@ class SplashActivity : ComponentActivity() {
     }
 
     private fun onGetStartedClicked(){
-      val x = 0
+      LoginActivity.start(this)
+      finish()
     }
 }

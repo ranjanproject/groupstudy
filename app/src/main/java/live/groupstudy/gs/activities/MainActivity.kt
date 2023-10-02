@@ -26,5 +26,6 @@ class MainActivity : ComponentActivity() {
 
     private fun startSplashActivity(){
         SplashActivity.start(this)
+        finish()
     }
 }

@@ -23,11 +23,14 @@ fun SplashLayout(modifier: Modifier = Modifier) {
 
     Column(
         modifier
-            .background(Brush.linearGradient(ScreenGradient))
             .fillMaxSize(),
         verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally) {
-        Image(painter = painterResource(id = R.drawable.ic_launcher_background), contentDescription = "")
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.ic_launcher_background),
+            contentDescription = ""
+        )
         Text(text = "Group", style = MaterialTheme.typography.titleLarge)
         Text(text = "Study")
     }

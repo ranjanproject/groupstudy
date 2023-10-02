@@ -8,4 +8,7 @@
     <string name="help_in_focus">Help in focused study time.</string>
     <string name="get_started">Get Started</string>
     <string name="title_activity_login">LoginActivity</string>
+    <string name="continue_btn">Continue</string>
+    <string name="phone_no">Phone No.</string>
+    <string name="sign_in_or_create_an_account">Sign in or Create an account</string>
 </resources>
