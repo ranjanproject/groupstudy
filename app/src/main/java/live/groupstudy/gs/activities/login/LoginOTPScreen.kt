@@ -1,6 +1,7 @@
 package live.groupstudy.gs.activities.login
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -52,7 +53,9 @@ fun LoginOTPScreen(
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Row(modifier = Modifier.fillMaxWidth()) {
                 Text(text = stringResource(id = R.string.to_number, number))
-                Text(text = stringResource(id = R.string.change_phone_number), color = DarkOrange)
+                Text(text = stringResource(id = R.string.change_phone_number),
+                    color = DarkOrange,
+                    modifier = Modifier.clickable { onBackClicked() })
             }
             Spacer(modifier = Modifier.height(40.dp))
 
@@ -68,7 +71,8 @@ fun LoginOTPScreen(
             Text(
                 text = stringResource(id = R.string.resend_code),
                 color = DarkOrange,
-                style = TextStyle(textDecoration = TextDecoration.Underline)
+                style = TextStyle(textDecoration = TextDecoration.Underline),
+                modifier = Modifier.clickable {  }
             )
         }
 

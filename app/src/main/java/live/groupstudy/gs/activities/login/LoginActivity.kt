@@ -84,8 +84,9 @@ class LoginActivity : ComponentActivity() {
                 arguments = listOf(navArgument(PHONE_NUMBER){type = NavType.StringType})
             ) {
                 val number = it.arguments?.getString(PHONE_NUMBER, "")
+
                 if (number != null) {
-                    LoginOTPScreen(number = number)
+                    LoginOTPScreen(number = number, onBackClicked = {navController.navigateUp()})
                 }
             }
 
