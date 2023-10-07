@@ -1,6 +1,6 @@
 package live.groupstudy.gs.activities.login
 
-enum class LoginScreen() {
-    GetNumber,
-    VerifyOTP
+enum class LoginScreen(val routeName: String) {
+    GetNumber("GetNumber"),
+    VerifyOTP("VerifyOTP/{${LoginActivity.PHONE_NUMBER}}")
 }

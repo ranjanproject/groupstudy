@@ -32,7 +32,11 @@ import live.groupstudy.gs.ui.theme.DarkOrange
 import live.groupstudy.gs.ui.theme.ScreenGradient
 
 @Composable
-fun LoginOTPScreen(number: String, modifier: Modifier = Modifier) {
+fun LoginOTPScreen(
+    number: String,
+    modifier: Modifier = Modifier,
+    onBackClicked: () -> Unit = {}
+) {
     Column(
         modifier
             .fillMaxSize()
