@@ -77,27 +77,39 @@ class LoginActivity : ComponentActivity() {
 
             //creating navigation graph
             composable(route = LoginScreen.GetNumber.routeName) {
-                GetPhoneNumberScreen(onButtonClicked = {navigateToRoute(navController, LoginScreen.VerifyOTP.routeName, number = it)})
+                GetPhoneNumberScreen(onButtonClicked = {
+                    navigateToRoute(
+                        navController,
+                        LoginScreen.VerifyOTP.routeName,
+                        number = it
+                    )
+                })
             }
 
-            composable(route = LoginScreen.VerifyOTP.routeName,
-                arguments = listOf(navArgument(PHONE_NUMBER){type = NavType.StringType})
+            composable(
+                route = LoginScreen.VerifyOTP.routeName,
+                arguments = listOf(navArgument(PHONE_NUMBER) { type = NavType.StringType })
             ) {
                 val number = it.arguments?.getString(PHONE_NUMBER, "")
 
-                if (number != null) {
-                    LoginOTPScreen(number = number, onBackClicked = {navController.navigateUp()})
+                if (!number.isNullOrEmpty()) {
+                    val hiddenNumber = number.replaceRange(startIndex = 2, endIndex = 7, "****")
+                    LoginOTPScreen(
+                        number = hiddenNumber,
+                        onBackClicked = { navController.navigateUp() })
                 }
             }
 
         }
 
     }
-    
-    
-    private fun navigateToRoute(navController: NavController,
-                                route: String,
-                                number: String = ""){
+
+
+    private fun navigateToRoute(
+        navController: NavController,
+        route: String,
+        number: String = ""
+    ) {
 
         navController.navigate(route.replace("{$PHONE_NUMBER}", number))
 

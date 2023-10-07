@@ -53,6 +53,7 @@ fun LoginOTPScreen(
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Row(modifier = Modifier.fillMaxWidth()) {
                 Text(text = stringResource(id = R.string.to_number, number))
+                Spacer(modifier = Modifier.width(5.dp))
                 Text(text = stringResource(id = R.string.change_phone_number),
                     color = DarkOrange,
                     modifier = Modifier.clickable { onBackClicked() })
@@ -72,7 +73,7 @@ fun LoginOTPScreen(
                 text = stringResource(id = R.string.resend_code),
                 color = DarkOrange,
                 style = TextStyle(textDecoration = TextDecoration.Underline),
-                modifier = Modifier.clickable {  }
+                modifier = Modifier.clickable { }
             )
         }
 
