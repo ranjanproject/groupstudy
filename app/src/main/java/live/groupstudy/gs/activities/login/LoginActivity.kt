@@ -8,13 +8,20 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+
 import androidx.compose.material3.MaterialTheme
+
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
-import live.groupstudy.gs.activities.ui.GetPhoneNumberScreen
+import androidx.navigation.NavController
+import androidx.navigation.NavHost
+import androidx.navigation.NavHostController
+
 import live.groupstudy.gs.ui.theme.GroupStudyTheme
 import live.groupstudy.gs.ui.theme.ScreenGradient
 
@@ -37,10 +44,19 @@ class LoginActivity : ComponentActivity() {
                         .background(Brush.linearGradient(ScreenGradient)),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    LoginActivityScreen()
+//                    LoginNavHost()
+
                 }
+
             }
         }
+    }
+
+    @Composable
+    private fun LoginNavHost(navController: NavController = NavController(LocalContext.current),
+                             startDestination: String = LoginScreen.GetNumber.name){
+
+
     }
 
     @Composable
@@ -56,8 +72,10 @@ class LoginActivity : ComponentActivity() {
         LoginActivityScreen()
     }
 
+
     private fun onContinueButtonClicked(number: String){
-      val x = number
+
+//        LoginOTPScreen(number = number)
     }
 }
 

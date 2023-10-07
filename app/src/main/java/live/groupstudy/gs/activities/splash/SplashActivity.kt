@@ -9,7 +9,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -21,8 +20,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import kotlinx.coroutines.delay
 import live.groupstudy.gs.activities.login.LoginActivity
-import live.groupstudy.gs.activities.ui.OnBoardingScreen
-import live.groupstudy.gs.activities.ui.SplashLayout
 import live.groupstudy.gs.ui.theme.GroupStudyTheme
 import live.groupstudy.gs.ui.theme.ScreenGradient
 

@@ -7,7 +7,18 @@ plugins {
 
 allprojects {
     ext {
+        set("activity_version","1.7.2")
         set("fragment_version", "1.6.1")
+        set("lifecycle_version", "2.6.1")
+        set("navigation_version","2.7.4")
+        set("core_ktx_version", "1.12.0")
+        set("bom_date", "2023.10.00")
+    }
+
+    ext{
+        set("jvm_target", "17")
+        set("kotlin_compiler_extension_version", "1.4.3")
+        set("java_version", JavaVersion.VERSION_17)
     }
 }
 

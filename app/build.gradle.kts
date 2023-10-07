@@ -1,18 +1,24 @@
-
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.gms.google-services")
 }
 
+
+private val jvmTargetVersion =  ext.get("jvm_target") as String
+private val ktCompilerExtensionVersion =
+    ext.get("kotlin_compiler_extension_version") as String
+private val javaVersion = ext.get("java_version") as JavaVersion
+
+
 android {
     namespace = "live.groupstudy.gs"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "live.groupstudy.gs"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -31,18 +37,22 @@ android {
             )
         }
     }
+
+
+
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = javaVersion
+        targetCompatibility = javaVersion
     }
+
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = jvmTargetVersion
     }
     buildFeatures {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.3"
+        kotlinCompilerExtensionVersion = ktCompilerExtensionVersion
     }
     packaging {
         resources {
@@ -51,37 +61,30 @@ android {
     }
 }
 
-val fragment_version = ext.get("fragment_version") as String
+
+private val fragmentVersion = ext.get("fragment_version") as String
+private val lifecycleVersion = ext.get("lifecycle_version") as String
+private val activityVersion = ext.get("activity_version") as String
+private val coreKtxVersion = ext.get("core_ktx_version") as String
+private val navigationVersion = ext.get("navigation_version") as String
+private val bomDate = ext.get("bom_date") as String
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
-    implementation("androidx.activity:activity-compose:1.7.0")
-    implementation(platform("androidx.compose:compose-bom:2023.03.00"))
+    implementation(platform("androidx.compose:compose-bom:${bomDate}"))
+    implementation("androidx.activity:activity-compose:${activityVersion}")
+    implementation("androidx.compose.material3:material3")
+    implementation("androidx.compose.runtime:runtime")
+    implementation("androidx.compose.runtime:runtime-livedata")
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation("androidx.compose.material3:material3")
-    implementation(platform("androidx.compose:compose-bom:2023.03.00"))
-    implementation("androidx.fragment:fragment:${fragment_version}")
-    implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
-    implementation("com.google.firebase:firebase-analytics-ktx")
-//    // Kotlin
-    implementation("androidx.fragment:fragment-ktx:$fragment_version")
-    implementation(platform("androidx.compose:compose-bom:2023.03.00"))
-    implementation(platform("androidx.compose:compose-bom:2023.03.00"))
-    androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
-    androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
-    // Testing Fragments in Isolation
-    debugImplementation("androidx.fragment:fragment-testing:$fragment_version")
+    implementation("androidx.core:core-ktx:${coreKtxVersion}")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:${lifecycleVersion}")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:${lifecycleVersion}")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:${lifecycleVersion}")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:${lifecycleVersion}")
+    implementation("androidx.navigation:navigation-compose:${navigationVersion}")
 
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
-    androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
-    debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
-
+    debugImplementation("androidx.compose.ui:ui-tooling")
 }

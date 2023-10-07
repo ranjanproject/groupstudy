@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">Group Study</string>
+    <string name="change_phone_number">Change phone number?</string>
+    <string name="continue_btn">Continue</string>
+    <string name="gcm_defaultSenderId" translatable="false">4369759429</string>
+    <string name="get_started">Get Started</string>
+    <string name="google_api_key" translatable="false">AIzaSyCdkF9aOPjLW9lFJhlv6b9SbaLt2o5rGX4</string>
+    <string name="google_app_id" translatable="false">1:4369759429:android:e454567d39a13dff7144ac</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCdkF9aOPjLW9lFJhlv6b9SbaLt2o5rGX4</string>
+    <string name="google_storage_bucket" translatable="false">group-study-9015f.appspot.com</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="help_in_focus">Help in focused study time.</string>
+    <string name="join_your_virtual_study">Join Your Virtual Study</string>
+    <string name="phone_no">Phone No.</string>
+    <string name="project_id" translatable="false">group-study-9015f</string>
+    <string name="resend_code">Resend Code</string>
+    <string name="sign_in_or_create_an_account">Sign in or Create an account</string>
+    <string name="study_with_friends">Study with friends &amp; to be friends.</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="to_number">To %1$s </string>
+    <string name="verification_code_title">Verification Code</string>
+    <string name="we_have_sent_the_code">We have sent the code verification</string>
+    <style name="Theme.GroupStudy" parent="android:Theme.Material.Light.NoActionBar"/>
+</resources>
