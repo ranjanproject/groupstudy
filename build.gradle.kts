@@ -13,6 +13,9 @@ allprojects {
         set("navigation_version","2.7.4")
         set("core_ktx_version", "1.12.0")
         set("bom_date", "2023.10.00")
+        set("junit_version","4.13.2")
+        set("junit_ktx_version", "1.1.5")
+        set("junit_monitor_version", "1.6.1")
     }
 
     ext{

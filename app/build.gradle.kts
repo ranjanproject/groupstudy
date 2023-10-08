@@ -68,6 +68,9 @@ private val activityVersion = ext.get("activity_version") as String
 private val coreKtxVersion = ext.get("core_ktx_version") as String
 private val navigationVersion = ext.get("navigation_version") as String
 private val bomDate = ext.get("bom_date") as String
+private val junitVersion = ext.get("junit_version") as String
+private val junitKtxVersion = ext.get("junit_ktx_version") as String
+private val junitMonitorVersion = ext.get("junit_monitor_version") as String
 
 dependencies {
     implementation(platform("androidx.compose:compose-bom:${bomDate}"))
@@ -84,6 +87,10 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:${lifecycleVersion}")
     implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:${lifecycleVersion}")
     implementation("androidx.navigation:navigation-compose:${navigationVersion}")
+
+    implementation("androidx.test:monitor:${junitMonitorVersion}")
+    implementation("androidx.test.ext:junit-ktx:${junitKtxVersion}")
+    androidTestImplementation("junit:junit:${junitVersion}")
 
     debugImplementation("androidx.compose.ui:ui-test-manifest")
     debugImplementation("androidx.compose.ui:ui-tooling")

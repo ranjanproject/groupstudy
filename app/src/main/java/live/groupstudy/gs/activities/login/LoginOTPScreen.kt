@@ -1,14 +1,20 @@
 package live.groupstudy.gs.activities.login
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
@@ -21,9 +27,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -36,8 +44,14 @@ import live.groupstudy.gs.ui.theme.ScreenGradient
 fun LoginOTPScreen(
     number: String,
     modifier: Modifier = Modifier,
-    onBackClicked: () -> Unit = {}
+    onBackClicked: () -> Unit = {},
+    onContinueClicked: (String)-> Unit= {}
 ) {
+
+    var otpValue by remember {
+        mutableStateOf("")
+    }
+
     Column(
         modifier
             .fillMaxSize()
@@ -60,10 +74,23 @@ fun LoginOTPScreen(
             }
             Spacer(modifier = Modifier.height(40.dp))
 
-            EnterOtpView()
+            BasicTextField(
+                value = otpValue,
+                onValueChange = {
+                    if (it.length <= 4) {
+                        otpValue = it
+                    }
+                },
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                decorationBox = {
+                    OTPBox(otpValue = otpValue)
+                })
+
             Spacer(modifier = Modifier.height(20.dp))
 
-            GradientButton(text = stringResource(id = R.string.continue_btn))
+            GradientButton(text = stringResource(id = R.string.continue_btn), onButtonClick = { onContinueClicked(otpValue) })
+
+
             Spacer(modifier = Modifier.height(40.dp))
 
             Text(text = "30:00")
@@ -81,40 +108,32 @@ fun LoginOTPScreen(
 }
 
 @Composable
-fun EnterOtpView() {
-    var text1 by remember {
-        mutableStateOf("")
-    }
-    var text2 by remember {
-        mutableStateOf("")
-    }
-    var text3 by remember {
-        mutableStateOf("")
-    }
-    var text4 by remember {
-        mutableStateOf("")
-    }
-    Row {
-        OtpText(text = text1, onValueChanged = { text1 = it })
-        Spacer(modifier = Modifier.width(15.dp))
-        OtpText(text = text2, onValueChanged = { text2 = it })
-        Spacer(modifier = Modifier.width(15.dp))
-        OtpText(text = text3, onValueChanged = { text3 = it })
-        Spacer(modifier = Modifier.width(15.dp))
-        OtpText(text = text4, onValueChanged = { text4 = it })
+fun OTPBox(otpValue: String) {
+
+    Row(horizontalArrangement = Arrangement.Center) {
+        repeat(4) { index ->
+            val char = when {
+                index >= otpValue.length -> ""
+                else -> otpValue[index].toString()
+            }
+
+            Text(
+                text = char,
+                modifier = Modifier
+                    .width(40.dp)
+                    .border(1.dp, color = Color.Gray, RoundedCornerShape(10.dp))
+                    .padding(10.dp),
+                color = Color.Black,
+                textAlign = TextAlign.Center
+            )
+
+            Spacer(modifier = Modifier.width(10.dp))
+        }
+
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun OtpText(text: String, onValueChanged: (String) -> Unit) {
-    TextField(
-        value = text,
-        onValueChange = { onValueChanged(it) },
-        Modifier.width(60.dp),
-        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
-    )
-}
+
 
 @Composable
 @Preview(showBackground = true)

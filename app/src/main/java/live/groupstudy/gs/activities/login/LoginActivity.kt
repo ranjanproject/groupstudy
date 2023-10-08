@@ -96,7 +96,11 @@ class LoginActivity : ComponentActivity() {
                     val hiddenNumber = number.replaceRange(startIndex = 2, endIndex = 7, "****")
                     LoginOTPScreen(
                         number = hiddenNumber,
-                        onBackClicked = { navController.navigateUp() })
+                        onBackClicked = { navController.navigateUp() },
+                        onContinueClicked = {
+                            val otp  = it
+                        })
+
                 }
             }
 
@@ -131,6 +135,7 @@ class LoginActivity : ComponentActivity() {
 
     private fun onContinueButtonClicked(number: String) {
 
+        val x = number
 //        LoginOTPScreen(number = number)
     }
 }
