@@ -9,6 +9,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 
 import androidx.compose.material3.MaterialTheme
 
@@ -20,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.NavHost
 import androidx.navigation.NavHostController
@@ -29,9 +31,15 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.google.firebase.FirebaseException
+import com.google.firebase.auth.PhoneAuthCredential
+import com.google.firebase.auth.PhoneAuthProvider
+import live.groupstudy.gs.datasources.FirebaseDataSource
+import live.groupstudy.gs.repositories.LoginRepository
 
 import live.groupstudy.gs.ui.theme.GroupStudyTheme
 import live.groupstudy.gs.ui.theme.ScreenGradient
+import live.groupstudy.gs.viewmodels.LoginViewModel
 
 class LoginActivity : ComponentActivity() {
 
@@ -41,6 +49,10 @@ class LoginActivity : ComponentActivity() {
         fun start(context: Context) {
             context.startActivity(Intent(context, LoginActivity::class.java))
         }
+    }
+
+    private val viewModel by lazy {
+         LoginViewModel(LoginRepository(FirebaseDataSource()))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,7 +67,7 @@ class LoginActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
 
-                    Column(Modifier.background(Brush.linearGradient(ScreenGradient))) {
+                    Column(Modifier.background(Brush.linearGradient(ScreenGradient)).padding(20.dp)) {
                         LoginNavHost()
                     }
 
@@ -83,6 +95,8 @@ class LoginActivity : ComponentActivity() {
                         LoginScreen.VerifyOTP.routeName,
                         number = it
                     )
+
+                    viewModel.generateOtp(it)
                 })
             }
 
@@ -97,8 +111,8 @@ class LoginActivity : ComponentActivity() {
                     LoginOTPScreen(
                         number = hiddenNumber,
                         onBackClicked = { navController.navigateUp() },
-                        onContinueClicked = {
-                            val otp  = it
+                        onContinueClicked = {otp ->
+                            Log.d(TAG, otp)
                         })
 
                 }
@@ -136,6 +150,7 @@ class LoginActivity : ComponentActivity() {
     private fun onContinueButtonClicked(number: String) {
 
         val x = number
+
 //        LoginOTPScreen(number = number)
     }
 }

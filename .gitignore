@@ -38,3 +38,5 @@ obj/
 
 #app/build - removes app build files
 app/build
+app/debug
+app/release
