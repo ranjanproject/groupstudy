@@ -1,6 +1,5 @@
 package live.groupstudy.gs.datasources
 
-import android.content.Context
 import android.util.Log
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.PhoneAuthCredential
