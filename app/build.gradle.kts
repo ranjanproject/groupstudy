@@ -30,11 +30,18 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isDebuggable = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs["debug"]
+        }
+
+        debug {
+            isDebuggable = true
+            signingConfig = signingConfigs["debug"]
         }
     }
 
