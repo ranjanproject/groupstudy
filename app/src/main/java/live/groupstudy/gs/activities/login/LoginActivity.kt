@@ -20,6 +20,7 @@ import androidx.compose.runtime.currentComposer
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -34,6 +35,7 @@ import androidx.navigation.navArgument
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
+import live.groupstudy.gs.R
 import live.groupstudy.gs.datasources.FirebaseDataSource
 import live.groupstudy.gs.repositories.LoginRepository
 
@@ -67,7 +69,12 @@ class LoginActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
 
-                    Column(Modifier.background(Brush.linearGradient(ScreenGradient)).padding(20.dp)) {
+                    Column(
+                        Modifier
+                            .background(Brush.linearGradient(ScreenGradient))
+                            .padding(
+                                dimensionResource(id = R.dimen.dimen_30)
+                            )) {
                         LoginNavHost()
                     }
 

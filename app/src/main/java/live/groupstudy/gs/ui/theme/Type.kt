@@ -37,10 +37,10 @@ val Typography = Typography(
         color = TitleColor
     ),
     labelSmall = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Medium,
-        fontSize = 11.sp,
-        lineHeight = 16.sp,
+        fontFamily = Poppins,
+        fontWeight = FontWeight.Normal,
+        fontSize = 18.sp,
+        lineHeight = 25.sp,
         letterSpacing = 0.5.sp,
         color = TitleColor
     ),
@@ -59,6 +59,6 @@ val Typography = Typography(
         lineHeight = 27.sp,
         letterSpacing = 0.0.sp,
         color = TitleColor
-    )
+    ),
 )
 

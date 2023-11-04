@@ -8,6 +8,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
@@ -18,7 +19,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.res.dimensionResource
 import kotlinx.coroutines.delay
+import live.groupstudy.gs.R
 import live.groupstudy.gs.activities.login.LoginActivity
 import live.groupstudy.gs.ui.theme.GroupStudyTheme
 import live.groupstudy.gs.ui.theme.ScreenGradient
@@ -38,10 +41,18 @@ class SplashActivity : ComponentActivity() {
 
                 // A surface container using the 'background' color from the theme
                 Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(Brush.linearGradient(ScreenGradient))
                 ) {
-                    SplashScreens()
+                    Column(
+                        Modifier
+                            .background(Brush.linearGradient(ScreenGradient))
+                            .padding(
+                                dimensionResource(id = R.dimen.dimen_30)
+                            )) {
+                        SplashScreens()
+                    }
                 }
             }
         }
@@ -54,9 +65,9 @@ class SplashActivity : ComponentActivity() {
             mutableStateOf(false)
         }
 
-        Column(Modifier.background(Brush.linearGradient(ScreenGradient))) {
+        Column() {
             if (visibleOnboarding) {
-                OnBoardingScreen(onButtonClick = {onGetStartedClicked()})
+                OnBoardingScreen(onButtonClick = { onGetStartedClicked() })
             } else {
                 SplashLayout()
             }
@@ -70,8 +81,8 @@ class SplashActivity : ComponentActivity() {
 
     }
 
-    private fun onGetStartedClicked(){
-      LoginActivity.start(this)
-      finish()
+    private fun onGetStartedClicked() {
+        LoginActivity.start(this)
+        finish()
     }
 }

@@ -35,8 +35,7 @@ import live.groupstudy.gs.ui.theme.ScreenGradient
 fun OnBoardingScreen(modifier: Modifier = Modifier, onButtonClick: (String) -> Unit = {}) {
     Column(
         modifier
-            .fillMaxSize()
-            .padding(dimensionResource(id = R.dimen.dimen_30)),
+            .fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
