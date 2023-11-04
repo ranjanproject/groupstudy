@@ -19,5 +19,7 @@ val PureWhite = Color(0xffffffff)
 val LightOrange = Color(0xffFF971A)
 val DarkOrange = Color(0xffF57C5B)
 
+val TitleColor = Color(0xff2B4065)
+
 val ScreenGradient = listOf(PureWhite,LightGreen, LightPink, PureWhite)
 val ButtonGradient = listOf(LightOrange, DarkOrange)

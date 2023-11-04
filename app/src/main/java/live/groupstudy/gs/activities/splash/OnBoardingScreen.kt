@@ -14,12 +14,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -34,7 +36,7 @@ fun OnBoardingScreen(modifier: Modifier = Modifier, onButtonClick: (String) -> U
     Column(
         modifier
             .fillMaxSize()
-            .padding(40.dp),
+            .padding(dimensionResource(id = R.dimen.dimen_30)),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -43,32 +45,44 @@ fun OnBoardingScreen(modifier: Modifier = Modifier, onButtonClick: (String) -> U
                 painter = painterResource(id = R.drawable.ic_launcher_foreground),
                 contentDescription = "Screen"
             )
+
+            val modifierText = Modifier.fillMaxWidth()
+
+            Column(
+                Modifier
+                    .fillMaxSize()
+                    .padding(bottom = dimensionResource(id = R.dimen.dimen_30)),
+                verticalArrangement = Arrangement.Bottom) {
+
+                Text(
+                    text = stringResource(R.string.join_your_virtual_study),
+                    modifierText,
+                    style = MaterialTheme.typography.titleLarge
+                )
+
+                Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.dimen_10)))
+                Text(
+                    text = stringResource(id = R.string.study_with_friends),
+                    modifierText,
+                    textAlign = TextAlign.Justify,
+                    style = MaterialTheme.typography.bodySmall
+                )
+                Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.dimen_10)))
+
+                Text(
+                    text = stringResource(id = R.string.help_in_focus),
+                    modifierText,
+                    textAlign = TextAlign.Justify,
+                    style = MaterialTheme.typography.bodySmall
+                )
+
+                Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.dimen_27)))
+
+                GradientButton(
+                    stringResource(R.string.get_started),
+                    onButtonClick = { onButtonClick("") })
+            }
         }
-
-        val modifierText = Modifier.fillMaxWidth()
-        Spacer(modifier = Modifier.height(20.dp))
-        Text(text = stringResource(R.string.join_your_virtual_study), modifierText)
-        Spacer(modifier = Modifier.height(20.dp))
-
-        Column {
-
-            Text(
-                text = stringResource(id = R.string.study_with_friends),
-                modifierText,
-                textAlign = TextAlign.Justify
-            )
-            Spacer(modifier = Modifier.height(10.dp))
-
-            Text(
-                text = stringResource(id = R.string.help_in_focus),
-                modifierText,
-                textAlign = TextAlign.Justify
-            )
-        }
-
-        Spacer(modifier = Modifier.height(40.dp))
-
-        GradientButton(stringResource(R.string.get_started), onButtonClick = { onButtonClick("") })
     }
 }
 
@@ -82,13 +96,15 @@ fun GradientButton(
     Button(
         colors = ButtonDefaults.buttonColors(
             Color.Transparent
-        ), onClick = { onButtonClick("") },
+        ),
+        onClick = { onButtonClick("") },
         contentPadding = PaddingValues(),
-        shape = RoundedCornerShape(10.dp)
+        shape = RoundedCornerShape(dimensionResource(id = R.dimen.dimen_12))
     ) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
+                .height(dimensionResource(id = R.dimen.dimen_60))
                 .background(gradient), contentAlignment = Alignment.Center
         )
         {
