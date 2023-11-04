@@ -52,7 +52,8 @@ fun OnBoardingScreen(modifier: Modifier = Modifier, onButtonClick: (String) -> U
                 Modifier
                     .fillMaxSize()
                     .padding(bottom = dimensionResource(id = R.dimen.dimen_30)),
-                verticalArrangement = Arrangement.Bottom) {
+                verticalArrangement = Arrangement.Bottom
+            ) {
 
                 Text(
                     text = stringResource(R.string.join_your_virtual_study),
@@ -111,7 +112,12 @@ fun GradientButton(
             Text(
                 text = text,
                 color = textColor,
-                modifier = Modifier.padding(top = 10.dp, bottom = 10.dp)
+                modifier = Modifier
+                    .padding(
+                        top = dimensionResource(id = R.dimen.dimen_10),
+                        bottom = dimensionResource(id = R.dimen.dimen_10)
+                    ),
+                style = MaterialTheme.typography.bodyMedium
             )
         }
     }
