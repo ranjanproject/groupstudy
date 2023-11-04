@@ -17,6 +17,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -28,6 +29,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
@@ -45,7 +47,7 @@ fun LoginOTPScreen(
     number: String,
     modifier: Modifier = Modifier,
     onBackClicked: () -> Unit = {},
-    onContinueClicked: (String)-> Unit= {}
+    onContinueClicked: (String) -> Unit = {}
 ) {
 
     var otpValue by remember {
@@ -58,21 +60,34 @@ fun LoginOTPScreen(
             .background(Brush.linearGradient(ScreenGradient))
     ) {
 
-        HeadingText(text = stringResource(id = R.string.verification_code_title))
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.dimen_33)))
 
-        Text(text = stringResource(id = R.string.we_have_sent_the_code))
-        Spacer(modifier = Modifier.height(5.dp))
+
+        Text(
+            text = stringResource(id = R.string.verification_code_title),
+            style = MaterialTheme.typography.titleLarge
+        )
+        Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.dimen_10)))
+
+        Text(
+            text = stringResource(id = R.string.we_have_sent_the_code),
+            style = MaterialTheme.typography.bodySmall
+        )
+        Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.dimen_5)))
 
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Row(modifier = Modifier.fillMaxWidth()) {
-                Text(text = stringResource(id = R.string.to_number, number))
-                Spacer(modifier = Modifier.width(5.dp))
+                Text(
+                    text = stringResource(id = R.string.to_number, number),
+                    style = MaterialTheme.typography.bodySmall
+                )
+                Spacer(modifier = Modifier.width(dimensionResource(id = R.dimen.dimen_5)))
                 Text(text = stringResource(id = R.string.change_phone_number),
+                    style = MaterialTheme.typography.bodySmall,
                     color = DarkOrange,
                     modifier = Modifier.clickable { onBackClicked() })
             }
-            Spacer(modifier = Modifier.height(40.dp))
+            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.dimen_60)))
 
             BasicTextField(
                 value = otpValue,
@@ -86,15 +101,17 @@ fun LoginOTPScreen(
                     OTPBox(otpValue = otpValue)
                 })
 
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.dimen_30)))
 
-            GradientButton(text = stringResource(id = R.string.continue_btn), onButtonClick = { onContinueClicked(otpValue) })
+            GradientButton(
+                text = stringResource(id = R.string.continue_btn),
+                onButtonClick = { onContinueClicked(otpValue) })
 
 
-            Spacer(modifier = Modifier.height(40.dp))
+            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.dimen_35)))
 
             Text(text = "30:00")
-            Spacer(modifier = Modifier.height(5.dp))
+            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.dimen_5)))
 
             Text(
                 text = stringResource(id = R.string.resend_code),
@@ -132,7 +149,6 @@ fun OTPBox(otpValue: String) {
 
     }
 }
-
 
 
 @Composable
