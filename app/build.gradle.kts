@@ -95,12 +95,15 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:${lifecycleVersion}")
     implementation("androidx.navigation:navigation-compose:${navigationVersion}")
 
+
+
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
-
     // Add the dependency for the Firebase Authentication library
     implementation("com.google.firebase:firebase-auth-ktx")
-
+    implementation("com.google.firebase:firebase-appcheck-playintegrity")
+    implementation("com.google.firebase:firebase-appcheck-ktx")
+    implementation("com.google.android.play:integrity:1.2.0")
 
 
     implementation("androidx.test:monitor:${junitMonitorVersion}")
