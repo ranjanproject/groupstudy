@@ -9,9 +9,9 @@
     <string name="get_started">Get Started</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="continue_btn">Continue</string>
-    
-    
-<!--    Login-->
+
+
+    <!--    Login-->
     <string name="phone_no">Phone No.</string>
     <string name="sign_in_or_create_an_account">Sign in or Create an account</string>
     <string name="verification_code_title">Verification Code</string>
@@ -19,5 +19,6 @@
     <string name="to_number">To %1$s </string>
     <string name="change_phone_number">Change phone number?</string>
     <string name="resend_code">Resend Code</string>
-    
+    <string name="title_activity_mood">MoodActivity</string>
+
 </resources>
