@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "4369759429",
+    "project_id": "group-study-9015f",
+    "storage_bucket": "group-study-9015f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:4369759429:android:e454567d39a13dff7144ac",
+        "android_client_info": {
+          "package_name": "live.groupstudy.gs"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdkF9aOPjLW9lFJhlv6b9SbaLt2o5rGX4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

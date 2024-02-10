@@ -1,16 +1,24 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.google.gms.google-services")
 }
+
+
+private val jvmTargetVersion =  ext.get("jvm_target") as String
+private val ktCompilerExtensionVersion =
+    ext.get("kotlin_compiler_extension_version") as String
+private val javaVersion = ext.get("java_version") as JavaVersion
+
 
 android {
     namespace = "live.groupstudy.gs"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "live.groupstudy.gs"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -22,25 +30,36 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isDebuggable = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs["debug"]
+        }
+
+        debug {
+            isDebuggable = true
+            signingConfig = signingConfigs["debug"]
         }
     }
+
+
+
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = javaVersion
+        targetCompatibility = javaVersion
     }
+
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = jvmTargetVersion
     }
     buildFeatures {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.3"
+        kotlinCompilerExtensionVersion = ktCompilerExtensionVersion
     }
     packaging {
         resources {
@@ -49,21 +68,48 @@ android {
     }
 }
 
-dependencies {
 
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
-    implementation("androidx.activity:activity-compose:1.7.0")
-    implementation(platform("androidx.compose:compose-bom:2023.03.00"))
+private val fragmentVersion = ext.get("fragment_version") as String
+private val lifecycleVersion = ext.get("lifecycle_version") as String
+private val activityVersion = ext.get("activity_version") as String
+private val coreKtxVersion = ext.get("core_ktx_version") as String
+private val navigationVersion = ext.get("navigation_version") as String
+private val bomDate = ext.get("bom_date") as String
+private val junitVersion = ext.get("junit_version") as String
+private val junitKtxVersion = ext.get("junit_ktx_version") as String
+private val junitMonitorVersion = ext.get("junit_monitor_version") as String
+
+dependencies {
+    implementation(platform("androidx.compose:compose-bom:${bomDate}"))
+    implementation("androidx.activity:activity-compose:${activityVersion}")
+    implementation("androidx.compose.material3:material3")
+    implementation("androidx.compose.runtime:runtime")
+    implementation("androidx.compose.runtime:runtime-livedata")
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation("androidx.compose.material3:material3")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
-    debugImplementation("androidx.compose.ui:ui-tooling")
+    implementation("androidx.core:core-ktx:${coreKtxVersion}")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:${lifecycleVersion}")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:${lifecycleVersion}")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:${lifecycleVersion}")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:${lifecycleVersion}")
+    implementation("androidx.navigation:navigation-compose:${navigationVersion}")
+
+
+
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
+    // Add the dependency for the Firebase Authentication library
+    implementation("com.google.firebase:firebase-auth-ktx")
+    implementation("com.google.firebase:firebase-appcheck-playintegrity")
+    implementation("com.google.firebase:firebase-appcheck-ktx")
+    implementation("com.google.android.play:integrity:1.2.0")
+
+
+    implementation("androidx.test:monitor:${junitMonitorVersion}")
+    implementation("androidx.test.ext:junit-ktx:${junitKtxVersion}")
+    androidTestImplementation("junit:junit:${junitVersion}")
+
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+    debugImplementation("androidx.compose.ui:ui-tooling")
 }

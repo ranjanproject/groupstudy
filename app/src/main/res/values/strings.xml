@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">Group Study</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="join_your_virtual_study">Join Your Virtual Study</string>
+    <string name="study_with_friends">Study with friends &amp; to be friends.</string>
+    <string name="help_in_focus">Help in focused study time.</string>
+    <string name="get_started">Get Started</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="continue_btn">Continue</string>
+
+
+    <!--    Login-->
+    <string name="phone_no">Phone No.</string>
+    <string name="sign_in_or_create_an_account">Sign in or Create an account</string>
+    <string name="verification_code_title">Verification Code</string>
+    <string name="we_have_sent_the_code">We have sent the code verification</string>
+    <string name="to_number">To %1$s </string>
+    <string name="change_phone_number">Change phone number?</string>
+    <string name="resend_code">Resend Code</string>
+    <string name="title_activity_mood">MoodActivity</string>
+
 </resources>
