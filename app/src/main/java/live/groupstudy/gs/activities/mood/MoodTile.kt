@@ -38,7 +38,7 @@ import live.groupstudy.gs.ui.theme.ScreenGradient
 
 
 @Composable
-fun MoodTile(title: String,imageId: Int,modifier: Modifier = Modifier) {
+fun MoodTile(moodTileItem: MoodTileItem,modifier: Modifier = Modifier) {
     var isSelected by remember {
         mutableStateOf(false)
     }
@@ -69,7 +69,7 @@ fun MoodTile(title: String,imageId: Int,modifier: Modifier = Modifier) {
     ) {
 
         Image(
-            painter = painterResource(id = imageId),
+            painter = painterResource(id = moodTileItem.imageId),
             contentDescription = null,
             modifier = Modifier
                 .fillMaxWidth()
@@ -81,7 +81,7 @@ fun MoodTile(title: String,imageId: Int,modifier: Modifier = Modifier) {
                 .fillMaxSize()
         ) {
             Text(
-                text = title,
+                text = moodTileItem.title,
                 style = MaterialTheme.typography.bodySmall
             )
         }
@@ -101,7 +101,7 @@ fun MoodTilePreview() {
         )
     LazyColumn{
         items(moodItemList){it ->
-            MoodTile(title = it.title, imageId = it.imageId)
+            MoodTile(it)
 
         }
     }
