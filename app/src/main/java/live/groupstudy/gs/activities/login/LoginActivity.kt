@@ -48,7 +48,6 @@ class LoginActivity : ComponentActivity() {
     companion object {
         const val PHONE_NUMBER = "phoneNumber"
         const val TAG = "LoginActivity"
-        const val trial="test case"
         fun start(context: Context) {
             context.startActivity(Intent(context, LoginActivity::class.java))
         }

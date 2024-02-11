@@ -43,7 +43,6 @@ class MoodActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
                     MoodItem()
                 }
             }
@@ -63,7 +62,6 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview() {
     GroupStudyTheme {
-//        Greeting("Android")
 
     }
     MoodItem()
