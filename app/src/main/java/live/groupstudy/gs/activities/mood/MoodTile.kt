@@ -1,5 +1,6 @@
 package live.groupstudy.gs.activities.mood
 
+import android.icu.text.CaseMap.Title
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -11,6 +12,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
@@ -29,11 +32,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import live.groupstudy.gs.R
+import live.groupstudy.gs.model.MoodTile
+import live.groupstudy.gs.model.MoodTileItem
 import live.groupstudy.gs.ui.theme.ScreenGradient
 
 
 @Composable
-fun MoodTile(modifier: Modifier = Modifier) {
+fun MoodTile(title: String,imageId: Int,modifier: Modifier = Modifier) {
     var isSelected by remember {
         mutableStateOf(false)
     }
@@ -44,23 +49,27 @@ fun MoodTile(modifier: Modifier = Modifier) {
             .width(dimensionResource(id = R.dimen.dimen_150))
             .background(
                 color = Color.White
-            ).clip(shape = RoundedCornerShape(
-                dimensionResource(id = R.dimen.dimen_10)
-            ))
+            )
+            .clip(
+                shape = RoundedCornerShape(
+                    dimensionResource(id = R.dimen.dimen_10)
+                )
+            )
             .border(
                 width = 1.dp,
                 color = if (isSelected) Color.Red else Color.Gray,
                 shape = RoundedCornerShape(
                     dimensionResource(id = R.dimen.dimen_10)
                 )
-            ).clickable {
-               isSelected = !isSelected
+            )
+            .clickable {
+                isSelected = !isSelected
             }
 
     ) {
 
         Image(
-            painter = painterResource(id = R.drawable.ic_launcher_foreground),
+            painter = painterResource(id = imageId),
             contentDescription = null,
             modifier = Modifier
                 .fillMaxWidth()
@@ -72,7 +81,7 @@ fun MoodTile(modifier: Modifier = Modifier) {
                 .fillMaxSize()
         ) {
             Text(
-                text = "Silent Buddha",
+                text = title,
                 style = MaterialTheme.typography.bodySmall
             )
         }
@@ -83,12 +92,17 @@ fun MoodTile(modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun MoodTilePreview() {
-    Box(
-        Modifier
-            .background(Brush.linearGradient(ScreenGradient))
-            .fillMaxSize()
-    ) {
-        MoodTile()
-    }
+    val moodItemList= listOf<MoodTileItem>(MoodTileItem(R.drawable.silentbuddha,"Silent Buddha"),
+        MoodTileItem(R.drawable.passionatelover,"passionate lover"),
+        MoodTileItem(R.drawable.studypanda,"Study panda"),
+        MoodTileItem(R.drawable.chanakya,"Chanakya"),
+        MoodTileItem(R.drawable.ghost,"ghost"),
 
+        )
+    LazyColumn{
+        items(moodItemList){it ->
+            MoodTile(title = it.title, imageId = it.imageId)
+
+        }
+    }
 }
