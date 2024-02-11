@@ -62,7 +62,6 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview() {
     GroupStudyTheme {
-
     }
     MoodItem()
 }
