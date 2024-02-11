@@ -22,7 +22,7 @@ class MoodActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Hello Ankesh")
+                    Greeting("Android")
                 }
             }
         }
