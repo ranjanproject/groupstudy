@@ -100,8 +100,8 @@ fun MoodTilePreview() {
 
         )
     LazyColumn{
-        items(moodItemList){it ->
-            MoodTile(it)
+        items(moodItemList){iterator ->
+            MoodTile(iterator)
 
         }
     }
