@@ -5,14 +5,20 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
@@ -74,12 +80,16 @@ fun MoodTile(moodTileItem: MoodTileItem,modifier: Modifier = Modifier) {
             modifier = Modifier
                 .fillMaxWidth()
                 .height(dimensionResource(id = R.dimen.dimen_85))
+
+
+
         )
         Column(
             Modifier
                 .padding(dimensionResource(id = R.dimen.dimen_10))
                 .fillMaxSize()
-        ) {
+        )
+        {
             Text(
                 text = moodTileItem.title,
                 style = MaterialTheme.typography.bodySmall
@@ -92,17 +102,23 @@ fun MoodTile(moodTileItem: MoodTileItem,modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun MoodTilePreview() {
-    val moodItemList= listOf<MoodTileItem>(MoodTileItem(R.drawable.silentbuddha,"Silent Buddha"),
-        MoodTileItem(R.drawable.passionatelover,"passionate lover"),
-        MoodTileItem(R.drawable.studypanda,"Study panda"),
-        MoodTileItem(R.drawable.chanakya,"Chanakya"),
-        MoodTileItem(R.drawable.ghost,"ghost"),
+    val moodItemList = listOf(
+        MoodTileItem(R.drawable.silentbuddha,  "Silent Buddha"),
+        MoodTileItem(R.drawable.passionatelover,  "Passionate Lover"),
+        MoodTileItem(R.drawable.studypanda,  "Study Panda"),
+        MoodTileItem(R.drawable.chanakya,  "Chanakya"),
+        MoodTileItem(R.drawable.ghost,  "Ghost")
+    )
+    LazyVerticalGrid(columns= GridCells. Fixed(2),
+    contentPadding = PaddingValues(40.dp),
+        verticalArrangement = Arrangement.spacedBy(20.dp),
+        horizontalArrangement = Arrangement.spacedBy(20.dp)
 
-        )
-    LazyColumn{
-        items(moodItemList){iterator ->
-            MoodTile(iterator)
+    ) {
+        items(moodItemList) { it->
+            MoodTile(it)
 
         }
+
     }
 }
