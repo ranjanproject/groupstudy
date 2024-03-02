@@ -1,6 +1,6 @@
 package live.groupstudy.gs.activities.mood
-
 import android.icu.text.CaseMap.Title
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -49,64 +49,66 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import live.groupstudy.gs.R
-import live.groupstudy.gs.model.MoodTile
 import live.groupstudy.gs.model.MoodTileItem
 import live.groupstudy.gs.ui.theme.ScreenGradient
+@Composable
+fun GenderLogoAndText(
+    @DrawableRes resourceId: Int,
+    gender: String,
+    onClick:() ->Unit
+){
+    Column(
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Image(
+            painter = painterResource(id = resourceId),
+            contentDescription = "logo",
+            modifier = Modifier.size(50.dp)
+        )
+        Text(
+            gender,
+            modifier = Modifier.align(Alignment.CenterHorizontally)
+        )
 
+    }
+}
 
 @Composable
-fun MoodTile(moodTileItem: MoodTileItem,modifier: Modifier = Modifier) {
-    var isSelected by remember {
-        mutableStateOf(false)
-    }
-
+fun MoodTile(moodTileItem: MoodTileItem, modifier: Modifier = Modifier) {
+    var isSelected by remember { mutableStateOf(false) }
     Column(
         modifier = modifier
             .height(dimensionResource(id = R.dimen.dimen_120))
             .width(dimensionResource(id = R.dimen.dimen_150))
-            .background(
-                color = Color.White
-            )
-            .clip(
-                shape = RoundedCornerShape(
-                    dimensionResource(id = R.dimen.dimen_10)
-                )
-            )
+            .background(color = Color.White)
+            .clip(shape = RoundedCornerShape(dimensionResource(id = R.dimen.dimen_10)))
             .border(
                 width = 1.dp,
                 color = if (isSelected) Color.Red else Color.Gray,
-                shape = RoundedCornerShape(
-                    dimensionResource(id = R.dimen.dimen_10)
-                )
+                shape = RoundedCornerShape(dimensionResource(id = R.dimen.dimen_10))
             )
             .clickable {
                 isSelected = !isSelected
             }
-
     ) {
-
         Image(
             painter = painterResource(id = moodTileItem.imageId),
             contentDescription = null,
             modifier = Modifier
                 .fillMaxWidth()
                 .height(dimensionResource(id = R.dimen.dimen_85))
-
-
-
         )
         Column(
-            Modifier
+            modifier = Modifier
                 .padding(dimensionResource(id = R.dimen.dimen_10))
                 .fillMaxSize()
-        )
-        {
+        ) {
             Text(
                 text = moodTileItem.title,
                 style = MaterialTheme.typography.bodySmall
             )
         }
-
     }
 }
 
@@ -121,11 +123,8 @@ fun MoodTilePreview() {
         MoodTileItem(R.drawable.ghost, "Ghost")
     )
     var name by remember { mutableStateOf("") }
-    var showDetails by remember { mutableStateOf(false) }
 
-    Column(
-        modifier = Modifier.fillMaxSize()
-    ) {
+    Column(modifier = Modifier.fillMaxSize()) {
         LazyVerticalGrid(
             columns = GridCells.Fixed(2),
             contentPadding = PaddingValues(40.dp),
@@ -136,47 +135,43 @@ fun MoodTilePreview() {
                 MoodTile(it)
             }
         }
+
         OutlinedTextField(
             value = name,
             onValueChange = { newName -> name = newName },
             label = { Text("Your name") },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 30.dp)
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 30.dp)
         )
+
         Spacer(modifier = Modifier.height(80.dp))
+
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(50.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Spacer(modifier = Modifier.width(10.dp))
-            Column(verticalArrangement = Arrangement.Center) {
-                Image(
-                    painter = painterResource(id = R.drawable.female),
-                    contentDescription = "Female logo",
-                    modifier = Modifier.size(50.dp)
-                )
-                Text("Female", modifier = Modifier.align(Alignment.CenterHorizontally))
-            }
+            GenderLogoAndText(
+                resourceId = R.drawable.female,
+                gender = "Female",
+                onClick = {
 
-            Column(verticalArrangement = Arrangement.Center) {
-                Image(
-                    painter = painterResource(id = R.drawable.male),
-                    contentDescription = "Male logo",
-                    modifier = Modifier.size(50.dp)
-                )
-                Text("Male", modifier = Modifier.align(Alignment.CenterHorizontally))
-            }
+                }
+            )
+            GenderLogoAndText(
+                resourceId = R.drawable.male,
+                gender = "Male",
+                onClick = {
+
+                }
+            )
         }
         Spacer(modifier = Modifier.height(20.dp))
         Button(
             onClick = { },
             shape = RoundedCornerShape(10.dp),
             colors = ButtonDefaults.buttonColors(Color(0xFFFFA501)),
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 20.dp)
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp)
         ) {
             Text("Study Library")
         }
