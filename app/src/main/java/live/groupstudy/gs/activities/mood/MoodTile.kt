@@ -73,6 +73,20 @@ fun GenderLogoAndText(
 
     }
 }
+@Composable
+fun LabeledOutlinedTextField(
+    value: String,
+    onValueChange: (String) -> Unit,
+    label: String,
+    modifier: Modifier = Modifier
+) {
+    OutlinedTextField(
+        value = value,
+        onValueChange = onValueChange,
+        label = { Text(label) },
+        modifier = modifier.fillMaxWidth().padding(horizontal = 30.dp)
+    )
+}
 
 @Composable
 fun MoodTile(moodTileItem: MoodTileItem, modifier: Modifier = Modifier) {
@@ -123,6 +137,7 @@ fun MoodTilePreview() {
         MoodTileItem(R.drawable.ghost, "Ghost")
     )
     var name by remember { mutableStateOf("") }
+    var additionalText by remember { mutableStateOf("") }
 
     Column(modifier = Modifier.fillMaxSize()) {
         LazyVerticalGrid(
@@ -135,16 +150,17 @@ fun MoodTilePreview() {
                 MoodTile(it)
             }
         }
-
-        OutlinedTextField(
+        LabeledOutlinedTextField(
             value = name,
             onValueChange = { newName -> name = newName },
-            label = { Text("Your name") },
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 30.dp)
+            label = "Your name"
         )
-
-        Spacer(modifier = Modifier.height(80.dp))
-
+        LabeledOutlinedTextField(
+            value = additionalText,
+            onValueChange = { newText -> additionalText = newText },
+            label = ""
+        )
+        Spacer(modifier = Modifier.height(10.dp))
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(50.dp),
