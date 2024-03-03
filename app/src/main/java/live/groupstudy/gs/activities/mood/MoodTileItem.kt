@@ -8,5 +8,4 @@ data class MoodTileItem(
     @DrawableRes val imageId: Int,
     val title: String,var modifier: Modifier = Modifier.shadow(8.dp))
 {
-
 }

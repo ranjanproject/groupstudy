@@ -1,9 +1,9 @@
 package live.groupstudy.gs.activities.mood
-
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -36,8 +36,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import live.groupstudy.gs.R
-
-
 @Composable
 fun MoodTile(moodTileItem: MoodTileItem  ,  modifier: Modifier = Modifier) {
     var isSelected by remember {
@@ -66,9 +64,7 @@ fun MoodTile(moodTileItem: MoodTileItem  ,  modifier: Modifier = Modifier) {
             .clickable {
                 isSelected = !isSelected
             }
-
     ) {
-
         Image(
             painter = painterResource(id = moodTileItem.imageId),
             contentDescription = null,
@@ -85,11 +81,9 @@ fun MoodTile(moodTileItem: MoodTileItem  ,  modifier: Modifier = Modifier) {
                 text = moodTileItem.title,
                 style = MaterialTheme.typography.bodySmall
             )
-
         }
     }
 }
-
             @Preview(showBackground = true)
             @Composable
             fun MoodTilePreview() {
@@ -98,34 +92,20 @@ fun MoodTile(moodTileItem: MoodTileItem  ,  modifier: Modifier = Modifier) {
                     MoodTileItem(R.drawable.passionatelover, "passionate lover"),
                     MoodTileItem(R.drawable.studypanda, "Study panda"),
                     MoodTileItem(R.drawable.chanakya, "Chanakya"),
-                    MoodTileItem(R.drawable.ghost, "ghost"),
-
+                    MoodTileItem(R.drawable.ghost, "ghost")
                     )
                 LazyVerticalGrid(
                     columns = GridCells.Fixed(2),
-                    contentPadding = PaddingValues(80.dp)
-
+                    contentPadding = PaddingValues(40.dp),
+                    verticalArrangement = Arrangement.spacedBy(20.dp),
+                    horizontalArrangement = Arrangement.spacedBy(20.dp)
                 ) {
                     items(moodItemList) { it ->
                         MoodTile(it)
                         Spacer(modifier = Modifier.height(150.dp));
-
-
                     }
                 }
             }
-//                @Composable
-//                fun MoodTileItemCell(item: MoodTileItem)
-//                {
-//                    Box(modifier = Modifier
-//                        .fillMaxWidth()
-//                        .aspectRatio(1f)
-//                        .padding(8.dp))
-//                    {
-//                        Spacer(modifier = Modifier.width(8.dp))
-//                    }
-//                }
-
 
 
 
