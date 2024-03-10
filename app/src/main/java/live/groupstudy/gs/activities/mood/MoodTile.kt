@@ -69,8 +69,8 @@ fun MoodTile(moodTileItem: MoodTileItem  ,  modifier: Modifier = Modifier) {
             painter = painterResource(id = moodTileItem.imageId),
             contentDescription = null,
             modifier = Modifier
-                .width(152.dp)
-                .height(86.dp)
+                .width(dimensionResource(id = R.dimen.dimen_152))
+                .height(dimensionResource(id = R.dimen.dimen_86))
         )
         Column(
             Modifier
@@ -96,13 +96,13 @@ fun MoodTile(moodTileItem: MoodTileItem  ,  modifier: Modifier = Modifier) {
                     )
                 LazyVerticalGrid(
                     columns = GridCells.Fixed(2),
-                    contentPadding = PaddingValues(40.dp),
-                    verticalArrangement = Arrangement.spacedBy(20.dp),
-                    horizontalArrangement = Arrangement.spacedBy(20.dp)
+                    contentPadding = PaddingValues(dimensionResource(id = R.dimen.dimen_40)),
+                    verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.dimen_20)),
+                    horizontalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.dimen_20))
                 ) {
                     items(moodItemList) { it ->
                         MoodTile(it)
-                        Spacer(modifier = Modifier.height(150.dp));
+                        Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.dimen_40)));
                     }
                 }
             }
