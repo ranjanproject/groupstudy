@@ -70,7 +70,6 @@ fun GenderLogoAndText(
             gender,
             modifier = Modifier.align(Alignment.CenterHorizontally)
         )
-
     }
 }
 @Composable
@@ -87,7 +86,6 @@ fun LabeledOutlinedTextField(
         modifier = modifier.fillMaxWidth().padding(horizontal = 30.dp)
     )
 }
-
 @Composable
 fun MoodTile(moodTileItem: MoodTileItem, modifier: Modifier = Modifier) {
     var isSelected by remember { mutableStateOf(false) }
@@ -125,7 +123,6 @@ fun MoodTile(moodTileItem: MoodTileItem, modifier: Modifier = Modifier) {
         }
     }
 }
-
 @Preview(showBackground = true)
 @Composable
 fun MoodTilePreview() {
