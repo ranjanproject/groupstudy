@@ -44,7 +44,6 @@ import live.groupstudy.gs.ui.theme.ScreenGradient
 import live.groupstudy.gs.viewmodels.LoginViewModel
 
 class LoginActivity : ComponentActivity() {
-
     companion object {
         const val PHONE_NUMBER = "phoneNumber"
         const val TAG = "LoginActivity"
@@ -52,11 +51,9 @@ class LoginActivity : ComponentActivity() {
             context.startActivity(Intent(context, LoginActivity::class.java))
         }
     }
-
     private val viewModel by lazy {
          LoginViewModel(LoginRepository(FirebaseDataSource()))
     }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -68,7 +65,6 @@ class LoginActivity : ComponentActivity() {
                         .background(Brush.linearGradient(ScreenGradient)),
                     color = MaterialTheme.colorScheme.background
                 ) {
-
                     Column(
                         Modifier
                             .background(Brush.linearGradient(ScreenGradient))
@@ -77,18 +73,13 @@ class LoginActivity : ComponentActivity() {
                             )) {
                         LoginNavHost()
                     }
-
                 }
-
             }
         }
     }
-
     @Composable
     fun LoginNavHost() {
-
         val navController = rememberNavController()
-
         NavHost(
             navController = navController,
             startDestination = LoginScreen.GetNumber.routeName
