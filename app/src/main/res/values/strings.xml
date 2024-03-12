@@ -21,4 +21,10 @@
     <string name="resend_code">Resend Code</string>
     <string name="title_activity_mood">MoodActivity</string>
 
+
+    <!-- TotalCountScreen-->
+    <string name="student">Name</string>
+    <string name="subject">Subject</string>
+
+
 </resources>

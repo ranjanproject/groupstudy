@@ -15,4 +15,7 @@
     <dimen name="dimen_150">150dp</dimen>
     <dimen name="dimen_430">430dp</dimen>
     <dimen name="dimen_460">460dp</dimen>
+    <dimen name="dimen_152">152dp</dimen>
+    <dimen name="dimen_86">86dp</dimen>
+    <dimen name="dimen_23">23sp</dimen>
 </resources>
