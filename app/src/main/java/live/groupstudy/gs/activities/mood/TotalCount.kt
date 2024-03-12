@@ -37,7 +37,6 @@ class TotalCount {
     ) {
         Column(modifier = modifier) {
             Text(text = "Total: ${members.size}", fontSize = 23.sp)
-//            Text(text = "Total: ${members.size}", fontSize = dimensionResource(id = R.dimen.dimen_23))
         }
     }
 }
