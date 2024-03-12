@@ -84,7 +84,6 @@ class LoginActivity : ComponentActivity() {
             navController = navController,
             startDestination = LoginScreen.GetNumber.routeName
         ) {
-
             //creating navigation graph
             composable(route = LoginScreen.GetNumber.routeName) {
                 GetPhoneNumberScreen(onButtonClicked = {
@@ -93,7 +92,6 @@ class LoginActivity : ComponentActivity() {
                         LoginScreen.VerifyOTP.routeName,
                         number = it
                     )
-
                     viewModel.generateOtp(it)
                 })
             }
