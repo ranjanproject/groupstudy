@@ -20,5 +20,7 @@
     <string name="change_phone_number">Change phone number?</string>
     <string name="resend_code">Resend Code</string>
     <string name="title_activity_mood">MoodActivity</string>
+    <string name="female">Female</string>
+    <string name="male">Male</string>
 
 </resources>
